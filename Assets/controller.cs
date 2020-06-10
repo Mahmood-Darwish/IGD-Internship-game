@@ -27,8 +27,7 @@ public class controller : MonoBehaviour
                  transform.eulerAngles.y,
                  -45
              );
-            
-            if(Input.GetTouch(0).phase == TouchPhase.Began && CD == 0)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 CD = .5f;
                 Vector3 pos = transform.position;
@@ -37,6 +36,19 @@ public class controller : MonoBehaviour
                 temp.transform.position = temp.transform.position + new Vector3(1, 0, 0);
                 temp.GetComponent<Rigidbody>().velocity = new Vector3(20, 0, 0);
             }
+            /*
+            if (Input.touchCount > 0)
+            {
+                if (Input.GetTouch(0).phase == TouchPhase.Began && CD == 0)
+                {
+                    CD = .5f;
+                    Vector3 pos = transform.position;
+                    Quaternion rotation = transform.rotation;
+                    GameObject temp = Instantiate(Bullet, pos, rotation);
+                    temp.transform.position = temp.transform.position + new Vector3(1, 0, 0);
+                    temp.GetComponent<Rigidbody>().velocity = new Vector3(20, 0, 0);
+                }
+            }*/
         }
         else
         {
@@ -52,6 +64,10 @@ public class controller : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Wall")
+        {
+            SceneManager.LoadScene(0);
+        }
+        if (collision.gameObject.tag == "Enemy")
         {
             SceneManager.LoadScene(0);
         }

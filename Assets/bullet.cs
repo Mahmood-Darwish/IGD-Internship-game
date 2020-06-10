@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    float timer = 5f;
+    float timer = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +26,11 @@ public class bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "Wall")
         {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }
