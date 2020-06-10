@@ -8,6 +8,8 @@ public class controller : MonoBehaviour
     Rigidbody rb;
     [SerializeField]
     GameObject Bullet;
+    [SerializeField]
+    GameObject temp;
     float CD;
     void Start()
     {
@@ -21,6 +23,7 @@ public class controller : MonoBehaviour
         CD = Mathf.Max(0, CD - Time.deltaTime);
         if (Input.touchCount > 0 || Input.GetKey(KeyCode.Space))
         {
+<<<<<<< Updated upstream
             rb.velocity = new Vector3(10, 10, 0); 
             transform.eulerAngles = new Vector3(
                  transform.eulerAngles.x,
@@ -28,6 +31,18 @@ public class controller : MonoBehaviour
                  -45
              );
             if (Input.GetKeyDown(KeyCode.Space))
+=======
+            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            Plane plane = new Plane(Vector3.forward, transform.position);
+            float distance = 0;
+            Vector3 touchpos = Vector3.zero;
+            if (plane.Raycast(ray, out distance))
+            { 
+                touchpos = ray.GetPoint(distance);
+            }
+            transform.position = touchpos;
+            if (CD == 0)
+>>>>>>> Stashed changes
             {
                 CD = .5f;
                 Vector3 pos = transform.position;
@@ -52,12 +67,16 @@ public class controller : MonoBehaviour
         }
         else
         {
+<<<<<<< Updated upstream
             rb.velocity = new Vector3(10, -10, 0);
             transform.eulerAngles = new Vector3(
                  transform.eulerAngles.x,
                  transform.eulerAngles.y,
                  -135
              );
+=======
+            rb.velocity = new Vector3(10, 0, 0);
+>>>>>>> Stashed changes
         }
     }
 
