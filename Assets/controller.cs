@@ -21,17 +21,8 @@ public class controller : MonoBehaviour
     void Update()
     {
         CD = Mathf.Max(0, CD - Time.deltaTime);
-        if (Input.touchCount > 0 || Input.GetKey(KeyCode.Space))
+        if (Input.touchCount > 0)
         {
-<<<<<<< Updated upstream
-            rb.velocity = new Vector3(10, 10, 0); 
-            transform.eulerAngles = new Vector3(
-                 transform.eulerAngles.x,
-                 transform.eulerAngles.y,
-                 -45
-             );
-            if (Input.GetKeyDown(KeyCode.Space))
-=======
             Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             Plane plane = new Plane(Vector3.forward, transform.position);
             float distance = 0;
@@ -42,7 +33,6 @@ public class controller : MonoBehaviour
             }
             transform.position = touchpos;
             if (CD == 0)
->>>>>>> Stashed changes
             {
                 CD = .5f;
                 Vector3 pos = transform.position;
@@ -51,38 +41,16 @@ public class controller : MonoBehaviour
                 temp.transform.position = temp.transform.position + new Vector3(1, 0, 0);
                 temp.GetComponent<Rigidbody>().velocity = new Vector3(20, 0, 0);
             }
-            /*
-            if (Input.touchCount > 0)
-            {
-                if (Input.GetTouch(0).phase == TouchPhase.Began && CD == 0)
-                {
-                    CD = .5f;
-                    Vector3 pos = transform.position;
-                    Quaternion rotation = transform.rotation;
-                    GameObject temp = Instantiate(Bullet, pos, rotation);
-                    temp.transform.position = temp.transform.position + new Vector3(1, 0, 0);
-                    temp.GetComponent<Rigidbody>().velocity = new Vector3(20, 0, 0);
-                }
-            }*/
         }
         else
         {
-<<<<<<< Updated upstream
-            rb.velocity = new Vector3(10, -10, 0);
-            transform.eulerAngles = new Vector3(
-                 transform.eulerAngles.x,
-                 transform.eulerAngles.y,
-                 -135
-             );
-=======
             rb.velocity = new Vector3(10, 0, 0);
->>>>>>> Stashed changes
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Wall")
+        if (collision.gameObject.tag == "Wall")
         {
             SceneManager.LoadScene(0);
         }
