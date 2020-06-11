@@ -31,7 +31,7 @@ public class controller : MonoBehaviour
             {
                 touchpos = ray.GetPoint(distance);
             }
-            transform.position = touchpos;
+            transform.position = Vector3.Lerp(transform.position, touchpos + new Vector3(0, 3, 0), 1);
             if (CD == 0)
             {
                 CD = .5f;
