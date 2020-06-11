@@ -6,11 +6,6 @@ using UnityEngine;
 public class bullet : MonoBehaviour
 {
     float timer = 2f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -22,15 +17,16 @@ public class bullet : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Wall")
+        if (other.gameObject.tag == "Wall")
         {
             Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }
