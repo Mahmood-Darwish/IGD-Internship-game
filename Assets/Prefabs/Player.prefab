@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3566623573210002811}
   - component: {fileID: 3566623573210002810}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf358554c199714499bd055c94584e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bullet: {fileID: 290657973035913386, guid: 1c3f3549de751874687d205eab58a79f, type: 3}
 --- !u!1 &3566623573993776680
 GameObject:
   m_ObjectHideFlags: 0
