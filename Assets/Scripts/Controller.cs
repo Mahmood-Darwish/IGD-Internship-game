@@ -71,11 +71,12 @@ public class Controller : MonoBehaviour
     {
         if (other.gameObject.tag == "Wall")
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
         if (other.gameObject.tag == "AttackingEnemy" || other.gameObject.tag == "DefendingEnemy")
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
