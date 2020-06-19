@@ -21,7 +21,7 @@ public class AttackingEnemy : MonoBehaviour
     {
         if (rd.isVisible)
         {
-            rb.velocity = new Vector3(-1, 0, 0);
+            rb.velocity = transform.up;
             rb.velocity *= speed;
         }
         if (hp <= 0)
