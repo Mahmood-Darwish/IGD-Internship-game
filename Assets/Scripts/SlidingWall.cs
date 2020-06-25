@@ -20,7 +20,8 @@ public class SlidingWall : MonoBehaviour
     {
         if (rd.isVisible)
         {
-            rb.velocity = new Vector3(0, -speed, 0);
+            rb.velocity = transform.up;
+            rb.velocity *= -speed;
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Experimental.UIElements;
 using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
@@ -16,13 +18,30 @@ public class Controller : MonoBehaviour
         rb.velocity = new Vector3(5, 0, 0);
     }
 
+    bool HasTouch()
+    {
+#if UNITY_EDITOR || UNITY_STANDALONE
+        return Input.GetMouseButton(0);
+#else
+        return Input.touchCount > 0;
+#endif
+    }
+
+    Vector2 TouchPosition()
+    {
+#if UNITY_EDITOR || UNITY_STANDALONE
+        return Input.mousePosition;
+#else
+        return Input.GetTouch(0).position;
+#endif
+    }
 
     void Update()
     {
         CD = Mathf.Max(0, CD - Time.deltaTime);
-        if (Input.touchCount > 0)
+        if (HasTouch())
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            Ray ray = Camera.main.ScreenPointToRay(TouchPosition());
             Plane plane = new Plane(Vector3.forward, transform.position);
             float distance = 0;
             Vector3 touchpos = Vector3.zero;
@@ -52,11 +71,12 @@ public class Controller : MonoBehaviour
     {
         if (other.gameObject.tag == "Wall")
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
         if (other.gameObject.tag == "AttackingEnemy" || other.gameObject.tag == "DefendingEnemy")
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
