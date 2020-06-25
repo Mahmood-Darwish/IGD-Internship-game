@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 5109208701326492933}
   - component: {fileID: 591230357530812527}
   - component: {fileID: 798341649781834373}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DefendingEnemy
   m_TagString: DefendingEnemy
   m_Icon: {fileID: 0}

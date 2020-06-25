@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6859629863262477547}
   - component: {fileID: 809976316166862566}
   - component: {fileID: 4661413069773751934}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SlidingWall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -121,3 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7357d5f08c520846b7cc05b47fb6e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0

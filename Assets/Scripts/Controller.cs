@@ -49,7 +49,14 @@ public class Controller : MonoBehaviour
             {
                 touchpos = ray.GetPoint(distance);
             }
-            transform.position = Vector3.Lerp(transform.position, touchpos + new Vector3(0, 3, 0), 1);
+            if (Physics.Linecast(transform.position, touchpos + new Vector3(0, 3, 0), ~(1 << 8)))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                transform.position = Vector3.Lerp(transform.position, touchpos + new Vector3(0, 3, 0), 3);
+            }
             if (CD <= 0)
             {
                 CD = .5f;
