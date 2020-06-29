@@ -40,6 +40,7 @@ public class Controller : MonoBehaviour
     {
         float scale = Time.timeScale;
         Time.timeScale = 0;
+        enabled = false;
         yield return new WaitForSecondsRealtime(0.5f);
         Time.timeScale = scale;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
