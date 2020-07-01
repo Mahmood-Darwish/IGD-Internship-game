@@ -49,11 +49,7 @@ public class Controller : MonoBehaviour
             {
                 touchpos = ray.GetPoint(distance);
             }
-<<<<<<< Updated upstream
-            if (Physics.Linecast(transform.position, touchpos + new Vector3(0, 3, 0), ~(1 << 8)))
-=======
             if (Physics.Linecast(transform.position, touchpos + new Vector3(3, 0, 0), 1 << LayerMask.NameToLayer("Enemies and walls")))
->>>>>>> Stashed changes
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
