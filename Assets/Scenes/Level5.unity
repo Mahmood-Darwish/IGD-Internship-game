@@ -717,13 +717,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< Updated upstream
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 44.893, z: 0}
-=======
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 44.893, z: -90}
->>>>>>> Stashed changes
 --- !u!114 &534669906
 MonoBehaviour:
   m_ObjectHideFlags: 0
