@@ -36,6 +36,16 @@ public class Controller : MonoBehaviour
 #endif
     }
 
+    IEnumerator Die()
+    {
+        float scale = Time.timeScale;
+        Time.timeScale = 0;
+        enabled = false;
+        yield return new WaitForSecondsRealtime(0.5f);
+        Time.timeScale = scale;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     void Update()
     {
         CD = Mathf.Max(0, CD - Time.deltaTime);
@@ -51,7 +61,7 @@ public class Controller : MonoBehaviour
             }
             if (Physics.Linecast(transform.position, touchpos + new Vector3(3, 0, 0), 1 << LayerMask.NameToLayer("Enemies and walls")))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                StartCoroutine(Die());
             }
             else
             {
@@ -78,12 +88,12 @@ public class Controller : MonoBehaviour
     {
         if (other.gameObject.tag == "Wall")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(Die());
         }
 
         if (other.gameObject.tag == "AttackingEnemy" || other.gameObject.tag == "DefendingEnemy")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(Die());
         }
     }
 }
